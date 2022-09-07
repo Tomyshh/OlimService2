@@ -1,26 +1,21 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:untitled/LogIn.dart';
-import 'package:untitled/MainPage.dart';
-import 'package:untitled/Subscription.dart';
-import 'Loading.dart';
+import 'package:untitled/LogIn_Signup/LogIn.dart';
+import 'package:untitled/LogIn_Signup/SubscriptionPageView1.dart';
+import 'package:untitled/LogIn_Signup/SubscriptionPageView2.dart';
+import 'package:untitled/LogIn_Signup/SubscriptionPageView3.dart';
+import 'package:untitled/WelcomePage/MainPage.dart';
+import 'package:untitled/LogIn_Signup/Subscription.dart';
+import '../widgets/Loading.dart';
 import 'package:get/get.dart';
 import 'package:country_icons/country_icons.dart';
-import 'StripePayment.dart';
-import 'Maj.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'SubscriptionPageView1.dart';
-import 'SubscriptionPageView2.dart';
-import 'SubscriptionPageView3.dart';
+
 
 class Inscription extends StatefulWidget {
   const Inscription({Key? key}) : super(key: key);
@@ -83,17 +78,17 @@ class _InscriptionState extends State<Inscription> {
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Comfortaa',
-                            color: Colors.deepPurpleAccent,
+                            color: Color(0xFF1D2860),
                           ),
                           colors: [
-                            Colors.deepPurpleAccent,
                             Colors.white,
-                            Colors.blueAccent,
+                            Color(0xFF1D2860),
+
                           ],
                         ),
                       ],
-                      isRepeatingAnimation: true,
-                      repeatForever: true,
+                      isRepeatingAnimation: false,
+                      repeatForever: false,
                     ),
                   ),
                 ),

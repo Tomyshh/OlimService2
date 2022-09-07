@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/LogIn.dart';
+import 'package:untitled/LogIn_Signup/LogIn.dart';
 
 class SubscriptionPageView2 extends StatefulWidget {
   @override
@@ -34,34 +34,32 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
       )),
       height: double.infinity,
       width: double.infinity,
-      alignment: Alignment.center,
+
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 60),
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  ColorizeAnimatedText(
-                    'BientotTermine'.tr,
-                    textStyle: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Comfortaa',
-                      color: Colors.blueAccent,
-                    ),
-                    colors: [
-                      Colors.white,
-                      Colors.blueAccent.shade400,
-                    ],
+            SizedBox(height: 100,),
+            AnimatedTextKit(
+              animatedTexts: [
+                ColorizeAnimatedText(
+                  'BientotTermine'.tr,
+                  textStyle: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Comfortaa',
+                    color: Colors.blueAccent,
                   ),
-                ],
-                isRepeatingAnimation: false,
-                repeatForever: false,
-              ),
+                  colors: [
+                  Colors.white,
+                    Colors.deepPurpleAccent,
+                  ],
+                ),
+              ],
+              isRepeatingAnimation: false,
+              repeatForever: false,
             ),
             SizedBox(
-              height: 60,
+              height: 100,
             ),
             Padding(
               padding:
@@ -76,9 +74,14 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                       size: 22,
                     ),
                     border: InputBorder.none,
-                    hintText: 'FirstName'.tr,
+                    hintText: 'Birth'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
@@ -94,7 +97,12 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
@@ -105,7 +113,12 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                     border: InputBorder.none,
                     hintText: 'Mail'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
@@ -121,7 +134,12 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
                 obscureText: isPasswordVisible ? false : true,
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
@@ -149,7 +167,12 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                     border: InputBorder.none,
                     hintText: 'Password'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
@@ -165,12 +188,17 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
                 obscureText: isConfirmPasswordVisible ? false : true,
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
-                      Icons.lock,
+                      Icons.verified_user,
                       color: Colors.white,
                       size: 22,
                     ),
@@ -194,7 +222,12 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                     border: InputBorder.none,
                     hintText: 'ConfirmPassword'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 13,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),

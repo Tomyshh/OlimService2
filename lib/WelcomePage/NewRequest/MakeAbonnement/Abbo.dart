@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -10,95 +11,146 @@ class Abbo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Color(0xFF3D9BE9),
-        title: Text('Abo'.tr),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontFamily: "Comfortaa",
-          fontSize: 18,
-        ),
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [
-                0.1,
-                0.8,
-              ],
-              colors: [
-                //Color(0xFF03045e),
-                Color(0xFF3D9BE9),
-                Colors.white,
-              ],
-            )),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Text('QuestionAbo'.tr,
-                  style: TextStyle(
-                    color: Color(0xFF1D2860),
-                    fontFamily: 'Comfortaa',
-                    fontStyle: FontStyle.normal,
-                    fontSize: 15,
-                  )),
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            Container(
-              margin: EdgeInsets.all(15.0),
-              height: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-                border: Border.all(
-                  color: Color(0xFF1D2860),
-                  width: 1,
-                ),
+      backgroundColor: Color(0xFF3A92E6),
+      body: ListView(children: [
+        Padding(
+          padding: EdgeInsets.only(top: 15.0, left: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.arrow_back_ios),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: new TextField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  decoration: new InputDecoration(
-                    hintText: 'YourText'.tr,
-                    hintStyle: TextStyle(
-                      fontStyle: FontStyle.italic,
-                    ),
-                    border: InputBorder.none,
+
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 25.0,
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 40.0),
+          child: AnimatedTextKit(
+            animatedTexts: [
+              ColorizeAnimatedText(
+                'Sub'.tr,
+                textStyle: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Comfortaa',
+                  color: Colors.blueAccent,
+                ),
+                colors: [
+                  Colors.white,
+                  Colors.blueAccent,
+                ],
+              ),
+            ],
+            isRepeatingAnimation: false,
+            repeatForever: false,
+          ),
+        ),
+        SizedBox(height: 40.0),
+        Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
+          ),
+          child: ListView(
+            physics: ScrollPhysics(),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top:50,left: 20,right: 20),
+                child: Center(
+                  child: AnimatedTextKit(
+                    animatedTexts: [
+                      ColorizeAnimatedText(
+                        "Indiquez à quel type d'abonnement souhaitez vous souscrire".tr,
+                        textStyle: TextStyle(
+                          fontSize: 14.5,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Comfortaa',
+                          color: Colors.blueAccent,
+                        ),
+                        colors: [
+                          Colors.blueAccent,
+                          Colors.deepPurpleAccent,
+                          Colors.blueAccent,
+                        ],
+                      ),
+                    ],
+                    isRepeatingAnimation: false,
+                    repeatForever: false,
                   ),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            FloatingActionButton(
-              splashColor: Color(0xFFaedbf9),
-              child: Container(
-                width: 60,
-                height: 60,
-                child: Icon(
-                  Icons.send,
-                  size: 30,
-                ),
+              SizedBox(height: 20,),
+              Container(
+                margin: EdgeInsets.all(8.0),
+                height: 200,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xFF3D9BE9),
+                  borderRadius: BorderRadius.circular(15.0),
+                  border: Border.all(
+                    color: Colors.blueAccent,
+                    width: 1,
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: const TextStyle(
+                      color: Colors.deepPurpleAccent,
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    decoration: InputDecoration(
+                      hintText: 'Expliquez votre demande'.tr,
+                      hintStyle: const TextStyle(
+                        fontStyle: FontStyle.italic,
+                        color: Colors.blueAccent,
+                      ),
+                      border: InputBorder.none,
+                    ),
+                  ),
                 ),
               ),
-              onPressed: () {},
-            )
-          ],
+              SizedBox(
+                height: 30,
+              ),
+              FloatingActionButton(
+                splashColor: Colors.blue,
+                child: Container(
+                  width: 60,
+                  height: 60,
+                  child: Icon(
+                    Icons.send,
+                    size: 25,
+                  ),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(colors: [
+                      Colors.deepPurpleAccent,
+                      Colors.blueAccent,
+                    ]),
+                  ),
+                ),
+                onPressed: () {},
+              ),
+              SizedBox(
+                height: 30,
+              ),
+            ],
+          ),
         ),
-      ),
+      ]),
     );
   }
 }

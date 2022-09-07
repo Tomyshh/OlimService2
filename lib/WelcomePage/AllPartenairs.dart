@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '../../Constants/Colors.dart';
+import '../Constants/Colors.dart';
 import 'package:delayed_display/delayed_display.dart';
 
 class AllPartenairs extends StatelessWidget {
@@ -13,150 +13,151 @@ class AllPartenairs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Icon(
-                  Icons.arrow_back_ios_new,
-                  color: Colors.deepPurpleAccent,
+      backgroundColor: Color(0xFF3A92E6),
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 15.0, left: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.arrow_back_ios),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ),
+          ),
+
+          SizedBox(
+            height: 25.0,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 40.0),
+            child: Text('Partner'.tr, style: bigBoldWhiteStyle,)
+          ),SizedBox(height: 5,),
+          Padding(
+            padding: const EdgeInsets.only(left: 40.0,right: 20),
+            child: Text('SousTitreAllPartner'.tr, style: smallWhiteStyle,),
+          ),
+          SizedBox(height: 40.0),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 50, left: 10,right: 10),
+              child: Center(
+                child: ListView(
+                  children: [
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: 'Construction'.tr,
+                          color: Color(0xFF2EBCFA),
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "RealEstate".tr,
+                          color: Color(0xFF2EBCFA),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3,),
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: "Plumber".tr,
+                          color: Color(0xFF34ABFF)
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "Info".tr,
+                          color: Color(0xFF34ABFF)
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3,),
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: "Assurance".tr,
+                          color: Color(0xFF318AFE),
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "Juridique".tr,
+                          color: Color(0xFF318AFE),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3,),
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: "Tel2".tr,
+                          color: Color(0xFF566AFF),
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "Bank".tr,
+                          color: Color(0xFF566AFF),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3,),
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: "Electric".tr,
+                          color: Color(0xFF745EFF),
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "Cours particulier",
+                          color: Color(0xFF745EFF),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3,),
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: "Climatisation".tr,
+                          color: Color(0xFF8358FF),
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "Vitre".tr,
+                          color: Color(0xFF8358FF),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 3,),
+                    Row(
+                      children: [
+                        MyPartenairsButton(
+                          text: "Electromenager".tr,
+                          color: Color(0xFF9F4FFE),
+                        ),
+                        SizedBox(width: 3,),
+                        MyPartenairsButton(
+                          text: "Internet".tr,
+                          color: Color(0xFF9F4FFE),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 100, bottom: 90),
-                    child: AnimatedTextKit(
-                      animatedTexts: [
-                        ColorizeAnimatedText(
-                          'TypeOfRDV'.tr,
-                          textStyle: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'Comfortaa',
-                            color: Colors.blueAccent,
-                          ),
-                          colors: [
-                            Colors.deepPurpleAccent,
-                            Colors.blueAccent,
-                          ],
-                        ),
-                      ],
-                      isRepeatingAnimation: false,
-                      repeatForever: false,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: 'Construction'.tr,
-                        color: Color(0xFF2EBCFA),
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "RealEstate".tr,
-                        color: Color(0xFF2EBCFA),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 3,),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: "Plumber".tr,
-                        color: Color(0xFF34ABFF)
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "Info".tr,
-                        color: Color(0xFF34ABFF)
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 3,),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: "Assurance".tr,
-                        color: Color(0xFF318AFE),
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "Juridique".tr,
-                        color: Color(0xFF318AFE),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 3,),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: "Tel2".tr,
-                        color: Color(0xFF566AFF),
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "Bank".tr,
-                        color: Color(0xFF566AFF),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 3,),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: "Electric".tr,
-                        color: Color(0xFF745EFF),
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "Cours particulier",
-                        color: Color(0xFF745EFF),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 3,),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: "Climatisation".tr,
-                        color: Color(0xFF8358FF),
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "Vitre".tr,
-                        color: Color(0xFF8358FF),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 3,),
-                  Row(
-                    children: [
-                      MyPartenairsButton(
-                        text: "Electromenager".tr,
-                        color: Color(0xFF9F4FFE),
-                      ),
-                      SizedBox(width: 3,),
-                      MyPartenairsButton(
-                        text: "Internet".tr,
-                        color: Color(0xFF9F4FFE),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

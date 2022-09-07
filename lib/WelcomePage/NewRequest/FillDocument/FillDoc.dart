@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
@@ -5,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:path/path.dart';
 import 'package:get/get.dart';
+import 'package:untitled/Constants/Colors.dart';
 
 class FillDoc extends StatefulWidget {
   @override
@@ -62,116 +64,191 @@ class _ImageUploadsState extends State<FillDoc> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'FillDocument'.tr,
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: "Comfortaa",
-            fontSize: 18,
-            fontStyle: FontStyle.normal,
+      backgroundColor: Color(0xFF3A92E6),
+      body: ListView(children: [
+        Padding(
+          padding: EdgeInsets.only(top: 15.0, left: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              IconButton(
+                icon: Icon(Icons.arrow_back_ios),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
           ),
         ),
-        centerTitle: true,
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [
-                0.1,
-                0.8,
-              ],
-              colors: [
-                //Color(0xFF03045e),
-                Color(0xFF3D9BE9),
-                Colors.white,
-              ],
-            )),
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 32,
-            ),
-            Text(
-              'YourDoc'.tr,
-              style: TextStyle(
-                fontFamily: 'Comfortaa',
-                fontSize: 25,
-                color: Colors.white,
+        SizedBox(
+          height: 25.0,
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 40.0),
+          child: AnimatedTextKit(
+            animatedTexts: [
+              ColorizeAnimatedText(
+                'FillDocument'.tr,
+                textStyle: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Comfortaa',
+                  color: Colors.blueAccent,
+                ),
+                colors: [
+                  Colors.white,
+                  Colors.blueAccent,
+                ],
               ),
-            ),
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  _showPicker(context);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(50.0),
-                  child: CircleAvatar(
-                    radius: 55,
-                    backgroundColor: Color(0xFF3D9BE9),
-                    child: _photo != null
-                        ? ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Image.file(
-                              _photo!,
+            ],
+            isRepeatingAnimation: false,
+            repeatForever: false,
+          ),
+        ),
+        SizedBox(height: 40.0),
+        Container(
+          height: MediaQuery.of(context).size.height,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(75.0)),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: ListView(
+              physics: ScrollPhysics(),
+              children: <Widget>[
+                Center(
+                    child: Text(
+                  'Veuillez joindre le document à remplir',
+                  style: normalBlueStyle,
+                )),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      _showPicker(context);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: _photo != null
+                          ? Container(
+                              child: Image.file(
+                                _photo!,
+                                width: 300,
+                                height: 300,
+                                fit: BoxFit.fitHeight,
+                              ),
+                            )
+                          : Container(
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(colors: [
+                                    Colors.deepPurpleAccent,
+                                    Colors.blueAccent,
+                                  ]),
+                                  borderRadius: BorderRadius.circular(50)),
                               width: 100,
-                              height: 100,
-                              fit: BoxFit.fitHeight,
+                              height: 50,
+                              child: Icon(
+                                Icons.upload_file,
+                                color: Colors.white,
+                              ),
                             ),
-                          )
-                        : Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey[200],
-                                borderRadius: BorderRadius.circular(50)),
-                            width: 100,
-                            height: 100,
-                            child: Icon(
-                              Icons.camera_alt,
-                              color: Colors.grey[800],
-                            ),
-                          ),
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+                Container(
+                  margin: EdgeInsets.all(8.0),
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    border: Border.all(
+                      color: Colors.blueAccent,
+                      width: 1,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: const TextStyle(
+                        color: Colors.deepPurpleAccent,
+                        fontFamily: 'Comfortaa',
+                        fontStyle: FontStyle.normal,
+                        fontSize: 14.5,
+                      ),
+                      keyboardType: TextInputType.multiline,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        hintText: 'YourText'.tr,
+                        hintStyle: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.blueAccent,
+                        ),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                FloatingActionButton(
+                  splashColor: Colors.blue,
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    child: Icon(
+                      Icons.send,
+                      size: 25,
+                    ),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(colors: [
+                        Colors.deepPurpleAccent,
+                        Colors.blueAccent,
+                      ]),
+                    ),
+                  ),
+                  onPressed: () {},
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
+      ]),
     );
   }
 
   void _showPicker(context) {
     showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc) {
-          return SafeArea(
-            child: Container(
-              child: new Wrap(
-                children: <Widget>[
-                  new ListTile(
-                      leading: new Icon(Icons.photo_library),
-                      title: new Text('Gallery'.tr),
-                      onTap: () {
-                        imgFromGallery();
-                        Navigator.of(context).pop();
-                      }),
-                  new ListTile(
-                    leading: new Icon(Icons.photo_camera),
-                    title: new Text('Camera'.tr),
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Container(
+            child: new Wrap(
+              children: <Widget>[
+                new ListTile(
+                    leading: new Icon(Icons.photo_library),
+                    title: new Text('Gallery'.tr),
                     onTap: () {
-                      imgFromCamera();
+                      imgFromGallery();
                       Navigator.of(context).pop();
-                    },
-                  ),
-                ],
-              ),
+                    }),
+                new ListTile(
+                  leading: new Icon(Icons.photo_camera),
+                  title: new Text('Camera'.tr),
+                  onTap: () {
+                    imgFromCamera();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

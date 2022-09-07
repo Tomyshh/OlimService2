@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:untitled/LogIn.dart';
+import 'package:untitled/LogIn_Signup/LogIn.dart';
 
 class SubscriptionPageView1 extends StatefulWidget {
   @override
@@ -26,126 +26,186 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView1> {
       )),
       height: double.infinity,
       width: double.infinity,
-      alignment: Alignment.center,
+
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 60),
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  ColorizeAnimatedText(
-                    'EncoreQuelqueEtapes'.tr,
-                    textStyle: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Comfortaa',
-                      color: Colors.blueAccent,
-                    ),
-                    colors: [
-                      Colors.deepPurpleAccent,
-                      Colors.blueAccent,
-                    ],
+            SizedBox(height: 100,),
+            AnimatedTextKit(
+              animatedTexts: [
+                ColorizeAnimatedText(
+                  'EncoreQuelqueEtapes'.tr,
+                  textStyle: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Comfortaa',
+                    color: Colors.blueAccent,
                   ),
-                ],
-                isRepeatingAnimation: false,
-                repeatForever: false,
-              ),
+                  colors: [
+                    Color(0xFF1D2860),
+                    Colors.blueAccent,
+                  ],
+                ),
+              ],
+              isRepeatingAnimation: false,
+              repeatForever: false,
             ),
             SizedBox(
-              height: 60,
+              height: 100,
             ),
             Padding(
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(
+                  color: Color(0xFF1D2860),
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.person,
-                      color: Colors.white,
+                      color: Color(0xFF1D2860),
                       size: 22,
                     ),
                     border: InputBorder.none,
                     hintText: 'FirstName'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Color(0xFF1D2860),
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
                             topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Color(0xFF1D2860).withAlpha(100))),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent,))),
+                        borderSide: BorderSide(color: Color(0xFF1D2860),))),
               ),
             ),
             Padding(
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(color: Color(0xFF1D2860), fontSize: 14.5),
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.person,
-                      color: Colors.white,
+                      color: Color(0xFF1D2860),
                       size: 22,
                     ),
                     border: InputBorder.none,
                     hintText: 'LastName'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Color(0xFF1D2860),
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
                             topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Color(0xFF1D2860).withAlpha(100),)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent,))),
+                        borderSide: BorderSide(color: Color(0xFF1D2860),))),
               ),
             ),
             Padding(
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(
+                  color: Color(0xFF1D2860),
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.badge,
-                      color: Colors.white,
+                      color: Color(0xFF1D2860),
                       size: 22,
                     ),
                     border: InputBorder.none,
                     hintText: 'ID'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(color: Color(0xFF1D2860), fontSize: 14.5),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
                             topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Color(0xFF1D2860).withAlpha(100),)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent,))),
+                        borderSide: BorderSide(color: Color(0xFF1D2860),))),
               ),
             ),
             Padding(
               padding:
               EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
               child: TextField(
-                style: TextStyle(color: Colors.white, fontSize: 14.5),
+                style: TextStyle(
+                  color: Color(0xFF1D2860),
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
+                decoration: InputDecoration(
+                    prefixIconConstraints: BoxConstraints(minWidth: 45),
+                    prefixIcon: Icon(
+                      Icons.call,
+                      color: Color(0xFF1D2860),
+                      size: 22,
+                    ),
+                    border: InputBorder.none,
+                    hintText: 'Phone'.tr,
+                    hintStyle:
+                    TextStyle(
+                      color: Color(0xFF1D2860),
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)
+                            .copyWith(bottomRight: Radius.circular(30),
+                            topLeft: Radius.circular(30)),
+                        borderSide: BorderSide(color: Color(0xFF1D2860).withAlpha(100),)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)
+                            .copyWith(bottomRight: Radius.circular(30),topLeft: Radius.circular(30)),
+                        borderSide: BorderSide(color: Color(0xFF1D2860),))),
+              ),
+            ),
+            Padding(
+              padding:
+              EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
+              child: TextField(
+                style: TextStyle(
+                  color: Color(0xFF1D2860),
+                  fontFamily: 'Comfortaa',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 14.5,
+                ),
                 decoration: InputDecoration(
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.place,
-                      color: Colors.white,
+                      color: Color(0xFF1D2860),
                       size: 22,
                     ),
                     suffixIconConstraints:
@@ -153,16 +213,21 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView1> {
                     border: InputBorder.none,
                     hintText: 'Adresse'.tr,
                     hintStyle:
-                    TextStyle(color: Colors.white, fontSize: 14.5),
+                    TextStyle(
+                      color: Color(0xFF1D2860),
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 14.5,
+                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
                             topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.white)),
+                        borderSide: BorderSide(color: Color(0xFF1D2860).withAlpha(100),)),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),topLeft: Radius.circular(30)),
-                        borderSide: BorderSide(color: Colors.deepPurpleAccent,))),
+                        borderSide: BorderSide(color: Color(0xFF1D2860),))),
               ),
             ),
             SizedBox(
@@ -187,18 +252,22 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView1> {
                           margin: EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white)),
+                              border: Border.all(color: Color(0xFF1D2860),)),
                           child: maleSelected
                               ? Container(
                             margin: EdgeInsets.all(4),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.deepPurpleAccent,),
+                                color: Color(0xFF1D2860),),
                           )
                               : SizedBox()),
                       Text('Male'.tr,
                           style: TextStyle(
-                              color: Colors.white, fontSize: 14.5))
+                            color: Color(0xFF1D2860),
+                            fontFamily: 'Comfortaa',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 14.5,
+                          ),)
                     ],
                   ),
                 ),
@@ -218,18 +287,22 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView1> {
                           margin: EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white)),
+                              border: Border.all(color: Color(0xFF1D2860),)),
                           child: femaleSelected
                               ? Container(
                             margin: EdgeInsets.all(4),
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.deepPurpleAccent,),
+                                color: Color(0xFF1D2860),),
                           )
                               : SizedBox()),
                       Text('Female'.tr,
                           style: TextStyle(
-                              color: Colors.white, fontSize: 14.5))
+                            color: Color(0xFF1D2860),
+                            fontFamily: 'Comfortaa',
+                            fontStyle: FontStyle.normal,
+                            fontSize: 14.5,
+                          ),)
                     ],
                   ),
                 )

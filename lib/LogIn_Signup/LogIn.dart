@@ -1,15 +1,16 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/Colors.dart';
-import 'package:untitled/MainPage.dart';
-import 'package:untitled/Subscription.dart';
-import 'Loading.dart';
-import 'delayed_animation.dart';
+import 'package:flutter/services.dart';
+import 'package:untitled/BottomNavigationBar/PageBeforeHomePage.dart';
+import 'package:untitled/BottomNavigationBar/bottombartest.dart';
+import 'package:untitled/Constants/Colors.dart';
+import 'package:untitled/LogIn_Signup/Subscription.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:country_icons/country_icons.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:untitled/WelcomePage/MainPage.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -17,6 +18,11 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  double width = 200;
+  FirebaseAuthPlatform authPlatform = FirebaseAuthPlatform.instanceFor(
+    app: Firebase.apps.first,
+    pluginConstants: {},
+  );
   bool isPasswordVisible = false;
   final _auth = FirebaseAuth.instance;
   String email = '';
@@ -169,35 +175,39 @@ class _HomepageState extends State<Homepage> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 30).copyWith(bottom: 10),
                   child: TextField(
-                    onChanged: (value) {
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(RegExp('[ ]')),
+                      ],
+
+                      onChanged: (value) {
                       email = value;
                     },
-                    style: TextStyle(color: Colors.white, fontSize: 14.5),
+                    style: normalBlueFonceStyle,
                     decoration: InputDecoration(
                         prefixIconConstraints: BoxConstraints(minWidth: 45),
+
                         prefixIcon: Icon(
                           Icons.email,
-                          color: Colors.white,
+                          color: Color(0xFF1D2860),
                           size: 22,
                         ),
                         border: InputBorder.none,
                         hintText: 'Mail'.tr,
-                        hintStyle:
-                            TextStyle(color: Colors.white, fontSize: 14.5),
+                        hintStyle: normalBlueFonceStyle,
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30).copyWith(
                                 bottomRight: Radius.circular(30),
                                 topLeft: Radius.circular(30)),
                             borderSide: error
                                 ? BorderSide(color: Colors.red.shade200)
-                                : BorderSide(color: Colors.white60)),
+                                : BorderSide(color: Color(0x341D2860),)),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30).copyWith(
                                 bottomRight: Radius.circular(30),
                                 topLeft: Radius.circular(30)),
                             borderSide: error
                                 ? BorderSide(color: Colors.red)
-                                : BorderSide(color: Colors.white))),
+                                : BorderSide(color: Color(0xFF1D2860),))),
                   ),
                 ),
                 Padding(
@@ -207,13 +217,13 @@ class _HomepageState extends State<Homepage> {
                     onChanged: (value) {
                       password = value;
                     },
-                    style: TextStyle(color: Colors.white, fontSize: 14.5),
+                    style: normalBlueFonceStyle,
                     obscureText: isPasswordVisible ? false : true,
                     decoration: InputDecoration(
                         prefixIconConstraints: BoxConstraints(minWidth: 45),
                         prefixIcon: Icon(
                           Icons.lock,
-                          color: Colors.white,
+                          color: Color(0xFF1D2860),
                           size: 22,
                         ),
                         suffixIconConstraints:
@@ -228,28 +238,27 @@ class _HomepageState extends State<Homepage> {
                             isPasswordVisible
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Colors.white,
+                            color: Color(0xFF1D2860),
                             size: 22,
                           ),
                         ),
                         border: InputBorder.none,
                         hintText: 'Password'.tr,
-                        hintStyle:
-                            TextStyle(color: Colors.white, fontSize: 14.5),
+                        hintStyle: normalBlueFonceStyle,
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30).copyWith(
                                 bottomRight: Radius.circular(30),
                                 topLeft: Radius.circular(30)),
                             borderSide: error
                                 ? BorderSide(color: Colors.red.shade200)
-                                : BorderSide(color: Colors.white60)),
+                                : BorderSide(color: Color(0x341D2860),)),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30).copyWith(
                                 bottomRight: Radius.circular(30),
                                 topLeft: Radius.circular(30)),
                             borderSide: error
                                 ? BorderSide(color: Colors.red)
-                                : BorderSide(color: Colors.white))),
+                                : BorderSide(color: Color(0xFF1D2860),))),
                   ),
                 ),
                 SizedBox(
@@ -279,12 +288,7 @@ class _HomepageState extends State<Homepage> {
                       padding: EdgeInsets.only(right: 30),
                       child: Text(
                         'FPassword'.tr,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Comfortaa',
-                          fontStyle: FontStyle.normal,
-                          fontSize: 13,
-                        ),
+                        style: normalBlueFonceStyle,
                       ),
                     ),
                   ),
@@ -292,7 +296,9 @@ class _HomepageState extends State<Homepage> {
                 SizedBox(
                   height: 40,
                 ),
-                Container(
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30).copyWith(
                           bottomRight: Radius.circular(30),
@@ -313,22 +319,19 @@ class _HomepageState extends State<Homepage> {
                               Colors.black38, //Colors.black12.withOpacity(0.2)
                         ),
                       ]),
-                  height: 40,
-                  width: 200,
+                  height: 50,
+
+                  width: isLoading ? width = 50 : width = 200,
+
                   child: TextButton(
                       child: isLoading
                           ? CircularProgressIndicator(
-                              strokeWidth: 1,
+                              strokeWidth: 1.5,
                               color: Colors.white,
                             )
                           : Text(
                               'Connexion'.tr,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Comfortaa',
-                                fontStyle: FontStyle.normal,
-                                fontSize: 15,
-                              ),
+                              style: normalWhiteStyle,
                             ),
                       onPressed: () async {
                         setState(() => isLoading = true);
@@ -344,11 +347,6 @@ class _HomepageState extends State<Homepage> {
                               child : DiscoverPage(),
                               curve: Curves.bounceInOut,
                             ));
-                            /*Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DiscoverPage()),
-                            );*/
                             error = false;
                           }
                           setState(() => isLoading = false);
@@ -376,12 +374,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 Text(
                   'NotAbbo'.tr,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Comfortaa',
-                    fontStyle: FontStyle.normal,
-                    fontSize: 13,
-                  ),
+                  style: normalBlueFonceStyle,
                 ),
                 SizedBox(
                   height: 20,
@@ -399,19 +392,14 @@ class _HomepageState extends State<Homepage> {
                     margin: EdgeInsets.symmetric(horizontal: 30),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white),
+                      border: Border.all(color: Color(0xFF1D2860),),
                       borderRadius: BorderRadius.circular(30).copyWith(
                           bottomRight: Radius.circular(0),
                           topLeft: Radius.circular(0)),
                     ),
                     child: Text(
                       'Inscription'.tr,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Comfortaa',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
+                      style: normalBlueFonceStyle,
                     ),
                   ),
                 ),
@@ -455,12 +443,7 @@ class _HomepageState extends State<Homepage> {
                     ),
                     child: Text(
                       'Languages'.tr,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Comfortaa',
-                        fontStyle: FontStyle.normal,
-                        fontSize: 15,
-                      ),
+                      style: normalWhiteStyle,
                     ),
                     onPressed: () {
                       buildialog(context);
