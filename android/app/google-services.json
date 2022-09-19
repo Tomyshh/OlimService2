@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "990707423141",
+    "project_id": "olimservice-7dbee",
+    "storage_bucket": "olimservice-7dbee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990707423141:android:986b5a92e31172dffcfa4c",
+        "android_client_info": {
+          "package_name": "com.tomydev.olimservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990707423141-8i33qq0afi3asirjknqh30t7g8nqbnrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOam65-qQoZnCa02kGG-Y8j75wZkkb454"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990707423141-8i33qq0afi3asirjknqh30t7g8nqbnrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
