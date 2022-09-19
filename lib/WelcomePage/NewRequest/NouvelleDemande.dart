@@ -94,483 +94,43 @@ class _NouvelleDemandeState extends State<NouvelleDemande> {
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 30),
-                child: GridView(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 19.w,
-                      mainAxisExtent: 130.w,
-                      mainAxisSpacing: 19.w),
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(3, 8))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF2EB8F9), // button color
-                          child: InkWell(
-                            splashColor: Colors.lightBlueAccent, // splash color
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: PayOnline(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.payment,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "PayOnline".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        MyRequestContainer(icon: Icons.payment_rounded, title: "PayOnline".tr, page: PayOnline(), color: Color(0xFF119AEA),),
+                        MyRequestContainer(icon: Icons.translate_rounded, title: 'Translation'.tr, page: Translate(), color: Color(0xFF119AEA),),
+                      ],
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(-3, 8))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF2EB8F9), // button color
-                          child: InkWell(
-                            splashColor: Colors.lightBlueAccent,
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: Translate(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.translate,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "Translation".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        MyRequestContainer(icon: Icons.drive_file_rename_outline, title: "WriteMessage".tr, page: RedigerMessage(), color: Color(0xFF147BF2),),
+                        MyRequestContainer(icon: Icons.calendar_month, title: 'MakeAppoint'.tr, page: RDV(), color: Color(0xFF147BF2),),
+                      ],
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(3, 4))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF3396FD), // button color
-                          child: InkWell(
-                            splashColor: Colors.lightBlueAccent,
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: RedigerMessage(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.drive_file_rename_outline,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "WriteMessage".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        MyRequestContainer(icon: Icons.save_as, title: "FillDocument".tr, page: FillDoc(), color: Color(0xFF1959F7),),
+                        MyRequestContainer(icon: Icons.groups, title: 'ConversA3'.tr, page: ConversationATrois(), color: Color(0xFF1959F7),),
+                      ],
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(-3, 4))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF3396FD), // button color
-                          child: InkWell(
-                            splashColor: Colors.green, // splash color
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: RDV(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.calendar_month,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "MakAppoint".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        MyRequestContainer(icon: Icons.payments, title: "Sub".tr, page: Abbo(), color: Color(0xFF1D34FE),),
+                        MyRequestContainer(icon: Icons.directions_car_filled, title: 'Car'.tr, page: DrivingLicense(), color: Color(0xFF1D34FE),)
+                      ],
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(3, -4))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF4A75FF), // button color
-                          child: InkWell(
-                            splashColor: Colors.orangeAccent,
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: FillDoc(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.save_as,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "FillDocument".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(-3, -4))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF4A75FF),
-                          child: InkWell(
-                            splashColor: Colors.lightBlueAccent,
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: ConversationATrois(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.groups,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "ConversA3".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 10.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(3, -8))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF785EFE),
-                          child: InkWell(
-                            splashColor: Colors.lightBlueAccent,
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: Abbo(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.payments,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "Sub".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 8.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(-3, -8))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF785EFE), // button color
-                          child: InkWell(
-                            splashColor: Colors.redAccent, // splash color
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: DrivingLicense(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.directions_car_filled,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "Car".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 8.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(-3, -8))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF785EFE),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: Appartment(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.maps_home_work,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "Appartment".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black26,
-                              blurRadius: 8.0,
-                              spreadRadius: 5.0,
-                              offset: Offset(-3, -8))
-                        ],
-                      ),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color(0xFF785EFE), // button color
-                          child: InkWell(
-                            splashColor: Colors.redAccent, // splash color
-                            onTap: () {
-                              Navigator.of(context).push(PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                childCurrent: widget,
-                                duration: Duration(milliseconds: 300),
-                                reverseDuration: Duration(milliseconds: 300),
-                                child: Autres(),
-                                curve: Curves.bounceInOut,
-                              ));
-                            }, // button pressed
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.lens_blur,
-                                  color: Colors.white,
-                                  size: 40,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ), // icon
-                                Text(
-                                  "Other".tr,
-                                  style: smallBoldWhiteStyle,
-                                ), // text
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        MyRequestContainer(icon: Icons.maps_home_work, title: "Appartment".tr, page: Appartment(), color: Color(0xFF1C3EFF),),
+                        MyRequestContainer(icon: Icons.lens_blur, title: 'Other'.tr, page: Autres(), color: Color(0xFF1C3EFF),)
+                      ],
                     ),
                   ],
                 ),
@@ -578,5 +138,70 @@ class _NouvelleDemandeState extends State<NouvelleDemande> {
             ),
           ],
         ));
+  }
+}
+
+class MyRequestContainer extends StatelessWidget {
+  final dynamic icon;
+  final String title;
+  final dynamic page;
+  final dynamic widget;
+  final Color color;
+  MyRequestContainer({Key? key,
+  required this.icon,
+  required this.title,
+  required this.page,
+  required this.color,
+  this.widget,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).push(
+          PageTransition(
+            type: PageTransitionType.rightToLeft,
+            childCurrent: widget,
+            duration: Duration(milliseconds: 300),
+            reverseDuration: Duration(milliseconds: 300),
+            child: page,
+            curve: Curves.bounceInOut,
+          ),
+        );
+      },
+      child: Container(
+        width: 150,
+        height: 120,
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(30),
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                spreadRadius: 3.0,
+                offset: Offset(3, 3))
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              icon,
+              color: Colors.white,
+              size: 40,
+            ),
+            SizedBox(
+              height: 20,
+            ), // icon
+            Text(
+              title,
+              style: smallBoldWhiteStyle,
+            ), // text
+          ],
+        ),
+      ),
+    );
   }
 }

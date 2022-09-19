@@ -54,11 +54,12 @@ class _AppartmentState extends State<Appartment> {
             height: 5,
           ),
           Padding(
-              padding: EdgeInsets.only(left: 40.0),
-              child: Text(
-                'SousTitreAppartment'.tr,
-                style: smallWhiteStyle,
-              ),),
+            padding: EdgeInsets.only(left: 40.0),
+            child: Text(
+              'SousTitreAppartment'.tr,
+              style: smallWhiteStyle,
+            ),
+          ),
           SizedBox(height: 40.0),
           Container(
             height: MediaQuery.of(context).size.height,
@@ -68,17 +69,43 @@ class _AppartmentState extends State<Appartment> {
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 28, vertical: 30),
-              child: Column(children: [
+              child: Column(
+                children: [
                   Row(
                     children: [
-
+                      ElevatedButton(
+                        child: Text(
+                          'Entry',
+                          style: normalBlueFonceStyle,
+                        ),
+                        onPressed: () {
+                          showModalBottomSheet(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            context: context,
+                            builder: (BuildContext context) {
+                              return SizedBox(
+                                height: 500,
+                                child: Center(
+                                  child: ElevatedButton(
+                                    child: Text('Close'),
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ],
-                  )
-              ],),
+                  ),
+                ],
+              ),
             ),
-
           ),
-
         ],
       ),
     );
