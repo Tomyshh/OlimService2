@@ -92,6 +92,30 @@ class _MyFilesState extends State<MyFiles> {
                     text: "Carte grise".tr,
                   ),
                   SizedBox(height: 10,),
+                  MyDocContainer(
+                    prefixIcon: Icons.badge,
+                    text: "ContratLoc".tr,
+                  ),
+                  SizedBox(height: 10,),
+                  MyDocContainer(
+                    prefixIcon: Icons.badge,
+                    text: "FactureElec".tr,
+                  ),
+                  SizedBox(height: 10,),
+                  MyDocContainer(
+                    prefixIcon: Icons.badge,
+                    text: "FactureArnona".tr,
+                  ),
+                  SizedBox(height: 10,),
+                  MyDocContainer(
+                    prefixIcon: Icons.badge,
+                    text: "FactureGaz".tr,
+                  ),
+                  SizedBox(height: 10,),
+                  MyDocContainer(
+                    prefixIcon: Icons.badge,
+                    text: "Passeport".tr,
+                  ),
                 ],
               ),
             ),

@@ -98,7 +98,7 @@ class DiscoverLargeCard extends StatelessWidget {
                       Text(
                         title!,
                         style: TextStyle(
-                            fontSize: 18.w,
+                            fontSize: 15.w,
                             fontFamily: 'Comfortaa',
                             fontWeight: FontWeight.bold,
                             color: Colors.white),

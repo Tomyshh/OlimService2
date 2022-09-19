@@ -16,6 +16,11 @@ import 'package:untitled/widgets/discover_card.dart';
 import 'package:untitled/widgets/discover_small_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mysql_client/mysql_client.dart';
+
+import '../Database.dart';
+import '../UserModel.dart';
+import '../testMySQL.dart';
 
 class DiscoverPage extends StatefulWidget {
   @override
@@ -23,11 +28,15 @@ class DiscoverPage extends StatefulWidget {
 }
 
 class _DiscoverPageState extends State<DiscoverPage> {
-  final GlobalKey<NavigatorState> homeNavigatorKey = GlobalKey();
-
+  final Main = main ;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
       backgroundColor: Colors.white, //Color(0xff121421),
       body: SafeArea(
         child: ListView(
@@ -41,7 +50,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                   AnimatedTextKit(
                     animatedTexts: [
                       ColorizeAnimatedText(
-                        'Bienvenue'.tr+' John',
+                        'Bienvenue'.tr,
                         textStyle: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.bold,
@@ -57,6 +66,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
                     isRepeatingAnimation: false,
                     repeatForever: false,
                   ),
+                  Text('name'),
                   SizedBox(width: 40,),
                   Container(child: Image.asset('assets/vip.jpg', scale: 30,))
                 ],
@@ -310,6 +320,9 @@ class _DiscoverPageState extends State<DiscoverPage> {
               ),
             ),
             SizedBox(height: 28.h),
+            TextButton(onPressed: (){
+              print('Name: name'+' est son nom');
+            }, child: Text('TEST'))
           ],
         ),
       ),
@@ -323,4 +336,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
   void onDepressionHealingTapped() {}
 
   void onSearchIconTapped() {}
+
+
 }
+

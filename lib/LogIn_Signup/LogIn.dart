@@ -2,8 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:untitled/BottomNavigationBar/PageBeforeHomePage.dart';
-import 'package:untitled/BottomNavigationBar/bottombartest.dart';
 import 'package:untitled/Constants/Colors.dart';
 import 'package:untitled/LogIn_Signup/Subscription.dart';
 import 'package:get/get.dart';
@@ -11,6 +9,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:untitled/WelcomePage/MainPage.dart';
+import 'package:country_icons/country_icons.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -34,6 +33,18 @@ class _HomepageState extends State<Homepage> {
     {'name': 'Français', 'locale': Locale('fr', 'FR')},
     {'name': 'English', 'locale': Locale('en', 'US')},
     {'name': 'עברית', 'locale': Locale('he', 'IL')},
+  ];
+
+  static const _iconTypes = <IconData>[
+    Icons.flag,
+    Icons.add_location_sharp,
+    Icons.zoom_in_outlined,
+  ];
+
+  List imgList = [
+    Image.asset('icons/flags/png/fr.png', package: 'country_icons', scale: 2,),
+    Image.asset('icons/flags/png/us.png', package: 'country_icons', scale: 2,),
+    Image.asset('icons/flags/png/il.png', package: 'country_icons', scale: 2,),
   ];
 
   updatelanguage(Locale locale) {
@@ -73,8 +84,14 @@ class _HomepageState extends State<Homepage> {
                           print(locale[index]['name']);
                           updatelanguage(locale[index]['locale']);
                         },
-                        child: Text(locale[index]['name'],
-                            style: TextStyle(color: Colors.white)),
+                        child: Row(
+                          children: [
+                            ClipOval(child : imgList[index], clipper: MyClipper(),),
+                            SizedBox(width: 20,),
+                            Text(locale[index]['name'],
+                                style: TextStyle(color: Colors.white)),
+                          ],
+                        ),
                       ),
                     );
                   },
@@ -91,7 +108,34 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return WillPopScope(
+      onWillPop: () async {
+        final shouldPop = await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              backgroundColor: Color(0xFF3D9BE9),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(32.0))),
+              title: Center(child: Text('ExitApp'.tr, style: normalBlueBoldFonceStyle)),
+              content: Text('AreYouSureToLeaveApp'.tr, style: normalWhiteStyle),
+              actions: [
+                TextButton(
+                  child: Text('Cancel'.tr, style: normalBlueBoldFonceStyle),
+                  onPressed: () => Navigator.pop(context, false),
+                ),
+                TextButton(
+                  child: Text('Confirm'.tr, style: normalBlueBoldFonceStyle),
+                  onPressed: () => SystemChannels.platform.invokeMethod('SystemNavigator.pop'),
+                ),
+              ],
+            );
+          },
+        );
+        // if the dialog is dismissed by tapping outside of the barrier
+        // the result is null, so we return false
+        return shouldPop ?? false;
+      },
       child: Scaffold(
         body: Container(
           height: double.infinity,
@@ -342,10 +386,10 @@ class _HomepageState extends State<Homepage> {
                             Navigator.of(context).push(PageTransition(
                               type: PageTransitionType.rightToLeft,
                               childCurrent: widget,
-                              duration: Duration(milliseconds: 600),
-                              reverseDuration: Duration(milliseconds: 600),
+                              duration: Duration(milliseconds: 400),
+                              reverseDuration: Duration(milliseconds: 400),
                               child : DiscoverPage(),
-                              curve: Curves.bounceInOut,
+                              curve: Curves.easeInBack,
                             ));
                             error = false;
                           }
@@ -392,14 +436,33 @@ class _HomepageState extends State<Homepage> {
                     margin: EdgeInsets.symmetric(horizontal: 30),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF1D2860),),
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(2, 2),
+                            blurRadius: 2,
+                            color:
+                            Colors.black38, //Colors.black12.withOpacity(0.2)
+                          ),
+                        ],
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomRight,
+                        end: Alignment.topLeft,
+                        colors: [
+                          Color(0xFFF7E17B),
+                          Color(0xFFBC8F36),
+                          Color(0xFFB17C27),
+                          Color(0xFFF7E17B),
+
+                        ]
+                      ),
+                      //border: Border.all(color:Color(0xFFF7E17B),),
                       borderRadius: BorderRadius.circular(30).copyWith(
                           bottomRight: Radius.circular(0),
                           topLeft: Radius.circular(0)),
                     ),
                     child: Text(
                       'Inscription'.tr,
-                      style: normalBlueFonceStyle,
+                      style: normalWhiteStyle,
                     ),
                   ),
                 ),
@@ -456,5 +519,14 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
     );
+  }
+}
+
+class MyClipper extends CustomClipper<Rect>{
+  Rect getClip(Size size){
+    return Rect.fromLTRB(100,80, 0, 0);
+  }
+  bool shouldReclip(oldClipper){
+    return false;
   }
 }

@@ -53,7 +53,15 @@ class _DrivingLicenseState extends State<DrivingLicense> {
                   Navigator.pop(context);
                 },
               ),
-
+              Container(
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                width: 70,
+                height: 50,
+              ),
             ],
           ),
         ),

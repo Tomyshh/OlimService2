@@ -8,6 +8,7 @@ import 'package:untitled/BottomNavigationBar/PageBeforeHomePage.dart';
 import 'package:untitled/BottomNavigationBar/Settings.dart';
 import 'package:untitled/Constants/Colors.dart';
 import 'package:untitled/WelcomePage/MainPage.dart';
+import 'package:untitled/WelcomePage/NewRequest/Appartement/Appartment.dart';
 import 'package:untitled/WelcomePage/NewRequest/Conversations3/ConversationsTrois.dart';
 import 'package:untitled/WelcomePage/NewRequest/DrivingLicense.dart';
 import 'package:untitled/WelcomePage/NewRequest/FillDocument/FillDoc.dart';
@@ -53,6 +54,15 @@ class _NouvelleDemandeState extends State<NouvelleDemande> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
+                  ),
+                  Container(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    width: 70,
+                    height: 50,
                   ),
                 ],
               ),
@@ -482,6 +492,52 @@ class _NouvelleDemandeState extends State<NouvelleDemande> {
                       ),
                       child: ClipOval(
                         child: Material(
+                          color: Color(0xFF785EFE),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                childCurrent: widget,
+                                duration: Duration(milliseconds: 300),
+                                reverseDuration: Duration(milliseconds: 300),
+                                child: Appartment(),
+                                curve: Curves.bounceInOut,
+                              ));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  Icons.maps_home_work,
+                                  color: Colors.white,
+                                  size: 40,
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ), // icon
+                                Text(
+                                  "Appartment".tr,
+                                  style: smallBoldWhiteStyle,
+                                ), // text
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.black26,
+                              blurRadius: 8.0,
+                              spreadRadius: 5.0,
+                              offset: Offset(-3, -8))
+                        ],
+                      ),
+                      child: ClipOval(
+                        child: Material(
                           color: Color(0xFF785EFE), // button color
                           child: InkWell(
                             splashColor: Colors.redAccent, // splash color
@@ -516,7 +572,6 @@ class _NouvelleDemandeState extends State<NouvelleDemande> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),

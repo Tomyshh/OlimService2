@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:untitled/Constants/Colors.dart';
 import 'package:untitled/LogIn_Signup/LogIn.dart';
 
 class SubscriptionPageView2 extends StatefulWidget {
@@ -50,8 +51,8 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                     color: Colors.blueAccent,
                   ),
                   colors: [
+                  Color(0xFF1D2860),
                   Colors.white,
-                    Colors.deepPurpleAccent,
                   ],
                 ),
               ],
@@ -104,6 +105,8 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                   fontSize: 14.5,
                 ),
                 decoration: InputDecoration(
+                    labelText: 'Mail'.tr,
+                    labelStyle: normalWhiteStyle,
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.mail,
@@ -111,14 +114,6 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                       size: 22,
                     ),
                     border: InputBorder.none,
-                    hintText: 'Mail'.tr,
-                    hintStyle:
-                    TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Comfortaa',
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14.5,
-                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
@@ -142,6 +137,8 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                 ),
                 obscureText: isPasswordVisible ? false : true,
                 decoration: InputDecoration(
+                    labelText: 'Password'.tr,
+                    labelStyle: normalWhiteStyle,
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.lock,
@@ -165,14 +162,6 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                       ),
                     ),
                     border: InputBorder.none,
-                    hintText: 'Password'.tr,
-                    hintStyle:
-                    TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Comfortaa',
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14.5,
-                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),
@@ -196,6 +185,12 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                 ),
                 obscureText: isConfirmPasswordVisible ? false : true,
                 decoration: InputDecoration(
+                    labelText: 'ConfirmPassword'.tr,
+                    labelStyle: TextStyle(
+                      color : Colors.white,
+                      fontFamily: 'Comfortaa',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 13,),
                     prefixIconConstraints: BoxConstraints(minWidth: 45),
                     prefixIcon: Icon(
                       Icons.verified_user,
@@ -220,14 +215,6 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView2> {
                       ),
                     ),
                     border: InputBorder.none,
-                    hintText: 'ConfirmPassword'.tr,
-                    hintStyle:
-                    TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Comfortaa',
-                      fontStyle: FontStyle.normal,
-                      fontSize: 13,
-                    ),
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30)
                             .copyWith(bottomRight: Radius.circular(30),

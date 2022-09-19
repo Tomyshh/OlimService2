@@ -16,7 +16,6 @@ class _SubscriptionPageView1State extends State<SubscriptionPageView3> {
 
   @override
   Widget build(BuildContext context) {
-    double doubleVar;
     return Container(
       decoration: BoxDecoration(gradient: LinearGradient(
           begin: Alignment.centerLeft,

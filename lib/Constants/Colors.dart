@@ -77,6 +77,11 @@ final normalBlueFonceStyle = TextStyle(
   fontFamily: 'Comfortaa',
   fontStyle: FontStyle.normal,
   fontSize: 15,);
+final italicBlueFonceStyle = TextStyle(
+  color : Colors.blue.shade900,
+  fontFamily: 'Comfortaa',
+  fontStyle: FontStyle.italic,
+  fontSize: 15,);
 final normalBlueBoldFonceStyle = TextStyle(
   color : Colors.blue.shade900,
   fontFamily: 'Comfortaa',

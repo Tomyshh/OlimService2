@@ -41,6 +41,12 @@ dependencies:
   syncfusion_flutter_datepicker: ^20.2.40
   delayed_display: ^2.0.0
   firebase_auth_platform_interface: ^6.1.10
+  mysql1: ^0.20.0
+  mysql_client: ^0.0.25
+  country_picker: ^2.0.16
+  percent_indicator: ^4.2.2
+  intl_phone_number_input: ^0.7.0+2
+
 
 
 
